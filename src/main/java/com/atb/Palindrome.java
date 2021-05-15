@@ -53,28 +53,40 @@ public class Palindrome {
 		}
 
 		int tempNumber = num ;
-		int leftDivider = 1 ;
+		int divider = 1 ;
 		int rightNumber;
 		int leftNumber;
 
-		// Find largest dividable power of 10 for the number
-		while ( tempNumber / leftDivider >= 10 ){
-			leftDivider *= 10;
-		}
+		divider = getDivider(tempNumber, divider);
 
 		// Find left and right numbers and compare them
 		while ( tempNumber != 0 ){
 			rightNumber = tempNumber % 10 ;
-			leftNumber  = tempNumber / leftDivider ;
+			leftNumber  = tempNumber / divider ;
 
 			if (rightNumber != leftNumber){
 				return false;
 			}
 			// Remove left and right numbers
-			tempNumber %= leftDivider;
+			tempNumber %= divider;
 			tempNumber /= 10;
-			leftDivider /= 100;
+			divider /= 100;
 		}
 		return true;
+	}
+
+	/**
+	 * Returns largest dividable power of 10 for num which results in none zero
+	 * @param num
+	 * @param divider
+	 * @return  int
+	 */
+
+	private static int getDivider(int num, int divider) {
+		// Find largest dividable power of 10 for the number
+		while ( num / divider >= 10 ){
+			divider *= 10;
+		}
+		return divider;
 	}
 }

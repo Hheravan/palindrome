@@ -15,6 +15,9 @@ public class PalindromeTest {
 		assertEquals(1234554321, findNearestPalindrome(1234554329));
 		assertEquals(999999999, findNearestPalindrome(999999998));
 		assertEquals(2147447412, findNearestPalindrome(Integer.MAX_VALUE));
+	}
+	@Test
+	public void testNotINcludingItself() {
 		assertEquals(11, findNearestPalindrome(12));
 		assertEquals(9, findNearestPalindrome(11));
 		assertEquals(111, findNearestPalindrome(121));
